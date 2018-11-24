@@ -1,0 +1,1 @@
+{"version":3,"file":"../../page/main.css","sources":["page/main.scss"],"sourcesContent":[".main {\r\n    &-visual {\r\n        width: 100%;\r\n        height:100vh;\r\n        \r\n        &__container {\r\n            \r\n        }\r\n    }\r\n}"],"names":[],"mappings":"AACK,AAAD,YAAQ,AAAC,CACL,KAAK,CAAE,IAAI,CACX,MAAM,CAAC,KAAK,CAKf"}
