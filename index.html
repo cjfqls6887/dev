@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="./assets/css/default.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+    <script type="text/javascript" src="./assets/js/common.js"></script>
+</head>
+<body>
+    <header class="header">
+        <button type="button" class="header-menu-button">
+            <spna class="hamburger">
+               <span class="hamburger-menu__top"></span>
+               <span class="hamburger-menu__center"></span>
+               <span class="hamburger-menu__bottom"></span>
+                메뉴 스위치
+            </spna>
+        </button>
+    </header>
+    <section class="main">
+        <section class="visual">
+            <div class="visual-container">
+                <h1 class="visual-logo">
+                    <div class="visual-logo__wrapper" data-word="D">D</div>
+                </h1>
+                <p class="visual-description" data-sentence style="margin-left:0px; margin-top:-30vh">
+                    <span class="visual-description__letter" data-letter><strong>D</strong></span>
+                    <span class="visual-description__letter" data-letter>V</span>
+                    <span class="visual-description__letter" data-letter>E</span>
+                    <span class="visual-description__letter" data-letter>L</span>
+                    <span class="visual-description__letter" data-letter>O</span>
+                    <span class="visual-description__letter" data-letter>P</span>
+                    <span class="visual-description__letter" data-letter>M</span>
+                    <span class="visual-description__letter" data-letter>E</span>
+                    <span class="visual-description__letter" data-letter>T</span>
+                </p>
+                <p class="visual-description" data-sentence style="margin-left:25vw; margin-top:-10vh">
+                    <span class="visual-description__letter" data-letter>T</span>
+                    <span class="visual-description__letter" data-letter>R</span>
+                    <span class="visual-description__letter" data-letter>E</span>
+                    <span class="visual-description__letter" data-letter>N</span>
+                    <span class="visual-description__letter" data-letter>D</span>
+                    <span class="visual-description__letter" data-letter>Y</span>
+                </p>
+                <p class="visual-description" data-sentence style="margin-left:-25vw; margin-top:20vh">
+                    <span class="visual-description__letter" data-letter>C</span>
+                    <span class="visual-description__letter" data-letter>R</span>
+                    <span class="visual-description__letter" data-letter>E</span>
+                    <span class="visual-description__letter" data-letter>A</span>
+                    <span class="visual-description__letter" data-letter>T</span>
+                    <span class="visual-description__letter" data-letter>I</span>
+                    <span class="visual-description__letter" data-letter>V</span>
+                    <span class="visual-description__letter" data-letter>&nbsp;</span>
+                    <span class="visual-description__letter" data-letter>I</span>
+                    <span class="visual-description__letter" data-letter><strong>D</strong></span>
+                    <span class="visual-description__letter" data-letter>E</span>
+                    <span class="visual-description__letter" data-letter>A</span>
+                </p>
+                <p class="visual-description" data-sentence style="margin-left:25vw; margin-top:27vh">
+                    <span class="visual-description__letter" data-letter>O</span>
+                    <span class="visual-description__letter" data-letter>P</span>
+                    <span class="visual-description__letter" data-letter>E</span>
+                    <span class="visual-description__letter" data-letter>M</span>
+                    <span class="visual-description__letter" data-letter>&nbsp;</span>
+                    <span class="visual-description__letter" data-letter>M</span>
+                    <span class="visual-description__letter" data-letter>I</span>
+                    <span class="visual-description__letter" data-letter>N</span>
+                    <span class="visual-description__letter" data-letter><strong>D</strong></span>
+                </p>
+                <p class="visual-description" data-sentence style="margin-left:-30vw">
+                    <span class="visual-description__letter" data-letter><strong>D</strong></span>
+                    <span class="visual-description__letter" data-letter>O</span>
+                    <span class="visual-description__letter" data-letter>N</span>
+                    <span class="visual-description__letter" data-letter>'</span>
+                    <span class="visual-description__letter" data-letter>T</span>
+                    <span class="visual-description__letter" data-letter>&nbsp;</span>
+                    <span class="visual-description__letter" data-letter>L</span>
+                    <span class="visual-description__letter" data-letter>I</span>
+                    <span class="visual-description__letter" data-letter>M</span>
+                    <span class="visual-description__letter" data-letter>I</span>
+                    <span class="visual-description__letter" data-letter>T</span>
+                </p>
+           </div>
+            <!--<ul class="main-visual__list">
+                <li class="main-visual__item">1</li>
+                <li class="main-visual__item">2</li>
+                <li class="main-visual__item">3</li>
+                <li class="main-visual__item">4</li>
+            </ul>
+            <ul class="main-visual__pagination"></ul>
+            <button type="button" class="main-visual__nav main-visual__nav--prev">이전으로</button>
+            <button type="button" class="main-visual__nav main-visual__nav--next">다음으로</button>-->
+        </section>
+    </section>
+    <script src="../assets/js/slider.js"></script>
+    <script>
+        (function () {
+            const LETTERACTIVECLASS = 'visual-description__letter--active';
+            const LETTERCURRENTCLASS = 'visual-description__letter--current';
+            const LOGOACTIVECLASS = 'visual-logo--active';
+
+            window.addEventListener('load',function () {
+                var logo = document.querySelector('.visual-logo');
+                logo.classList.add(LOGOACTIVECLASS);
+
+                var sentences = document.querySelectorAll('[data-sentence]');
+                if( sentences ) {
+                    function sentenceLoop (index) {
+                        if( ! index ) index = 0; 
+
+                        var letters = sentences[index].querySelectorAll('[data-letter]');
+
+                        letterShow(letters,0,function () {
+                            if( index < sentences.length-1 ) {
+                                index += 1;
+                                setTimeout(function () {
+                                    sentenceLoop (index)    
+                                },500)
+                            }
+                        })
+                    }
+                    setTimeout( sentenceLoop, 2000 )
+                } 
+            });
+
+            function letterShow(letters,letterIndex,fn) {
+                if( ! letterIndex ) letterIndex = 0;
+
+                letters[letterIndex].classList.add(LETTERACTIVECLASS,LETTERCURRENTCLASS)
+                if( letterIndex !== 0 ) letters[letterIndex-1].classList.remove(LETTERCURRENTCLASS);
+
+                if( letters.length-1 > letterIndex ) {
+                    letterIndex += 1;
+                    setTimeout(function () {
+                        letterShow(letters,letterIndex,fn);
+                    },100);
+                } else {
+                    if( fn ) fn ();
+                }
+            }
+
+        })();
+
+
+        /*var test = new Slider({
+            slider : '.main-visual',
+            list : '.main-visual__list',
+            item : '.main-visual__item',
+            nav : '.main-visual__nav',
+            navPrev : 'main-visual__nav--prev',
+            navNext : 'main-visual__nav--next',
+            pagination : '.main-visual__pagination',
+            autoPlay : true,
+            speed : 1000,
+            autoSpeed : 4000
+        });*/
+
+    </script>
+</body>
+</html>    
