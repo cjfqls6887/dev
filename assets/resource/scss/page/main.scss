@@ -1,0 +1,158 @@
+@keyframes visual-background {
+    from {
+        background-color:#fff;
+    }
+    to {
+        background-color: #353535;
+    }
+}
+$sentence: (
+    2 : (0px,-30vh),
+    3 : (25vw,-10vh),
+    4 : (-25vw, 3vh),
+    5 : (25vw, 23vh)
+);
+.visual {
+    position: relative;
+    width: 100%;
+    height:100vh;
+    background-color: #333333;
+    /*animation: visual-background 5000ms;*/
+    
+
+    &-container {
+        width: 100%;
+        height:100%;
+        margin: 0 auto; 
+        padding: 20vh 0;
+       
+    }
+
+    
+    &-description {
+        position: absolute;
+        left:50%;
+        top:50%;
+        color:#999;
+        font-size: 0;
+        line-height:1;
+        text-align: center;
+        letter-spacing: -0.1px;
+        transform:translate(-50%,-50%);
+        font-weight: 100;
+        
+        
+        
+        @each $nth,$position in $sentence {
+            $x: nth($position,1);
+            $y: nth($position,2);
+            
+            &:nth-child(#{$nth}) {
+                margin-left:#{$x};
+                margin-top:#{$y};
+            }
+        }
+        
+        &__letter {
+            position: relative;
+            font-size:36px;
+            opacity: 0;
+            
+            @keyframes visual-letter-typing {
+                0%, 50% {
+                  visibility: visible;
+                }
+                51%, 100% {
+                  visibility: hidden;
+                }
+              }
+            
+            &:after {
+                position: absolute;
+                left:100%;
+                bottom:0;
+                display: none;
+                width:17px;
+                height:2px;
+                background-color: #666;
+                content: '';
+            }
+            
+            &--active {
+                opacity: 1;
+            }
+            
+            &--current {
+                position: relative;
+                &:after {
+                    display: block;
+                    animation: visual-letter-typing 500ms linear infinite alternate;
+                }
+            }
+        }
+    }
+
+    &-logo {
+        position: absolute;
+        left:50%;
+        top:50%;
+        width: 250px;
+        height: 360px;
+        margin:0 auto;
+        text-align: center;
+        font-size: 0;
+        transform:translate(-50%,-50%);
+        
+        &__wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            
+            &::before,
+            &::after {
+                position: absolute;
+                display: block;
+                width: 100%;
+                font-size:360px;
+                color:#999;
+                line-height: 1;
+                text-align: center;
+                /*background-image: url(../images/icon/logo.png);
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: 100% 100%;*/
+                transition: all 1000ms;
+                transition-delay: 200ms;
+                font-weight: 100;
+                opacity: 0;
+                content: attr(data-word);
+            }
+
+            &::before {
+                transform:scale(0.8);
+            }
+
+            &::after {
+                transition-delay: 700ms;
+            }    
+        }
+        
+    }
+
+    &-logo--active &-logo__wrapper {
+        &::before,
+        &::after {
+            opacity: 1;
+        }
+
+        &::before {
+            transform:scale(1);
+        }
+
+        &::after {
+            transform:scale(0.7);
+        }
+    }
+}
+
+

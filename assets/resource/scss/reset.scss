@@ -1,0 +1,26 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body {
+    position: relative;
+    width: 100%;
+    line-height: 1;
+    font-size:12px;
+    font-family: 'Dotum';
+    overflow-x:hidden;
+}
+
+button,a {
+    background-color:transparent;
+    border:0;
+    text-decoration:inherit;
+    vertical-align: middle;
+    cursor:pointer;
+}
+
+ul,li,ol, {
+    list-style:none;
+}
